@@ -76,6 +76,7 @@ informative:
   I-D.piraux-quic-tunnel-tcp:
   I-D.boucadair-mptcp-plain-mode:
   I-D.bonaventure-iccrg-schedulers:
+  I-D.an-multipath-quic-traffic-distribution:
   RFC5533:
   RFC6275:
   RFC5213:
@@ -497,6 +498,9 @@ same ATSSS UPF will not necessarily be handled by the same server.
 A third solution is to leverage the ability of QUICv1 to support multiple
 streams and the Unreliable Datagram Extension but extend is with
 Multipath capabilities as described in {{I-D.deconinck-quic-multipath}}.
+In addition, {{I-D.an-multipath-quic-traffic-distribution}} describes several 
+key components for Multipath QUIC traffic distribution which are compliant 
+with the Multipath Extensions for QUIC.
 With these Multipath extensions, there is a single (Multipath) QUIC session
 between the UE and the ATSSS. The Multipath extensions provide several
 benefits to support ATSSSv2. Splitting is directly supported. Data
