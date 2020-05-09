@@ -515,7 +515,12 @@ of time during which both networks are imperfect {{MPTester}}. During
 these periods, it is important to be able to use both networks
 simultaneously.
 Since there is a single Multipath QUIC session between the UE and the
-ATSSS UPF load-balancers do not cause problems. 
+ATSSS UPF load-balancers do not cause problems. Also, experience with 
+Multipath TCP on smartphones has shown that the deployment of Multipath TCP 
+may bring high complexity and high cost, as Multipath TCP client requires 
+native support in mobile phone as well as in its chip, which leads to 
+difficulty to wide-scale Multipath TCP deployment. It can be avoided by 
+Multipath QUIC.
 
 --- OB: Not convinced by the last paragraphs
 
