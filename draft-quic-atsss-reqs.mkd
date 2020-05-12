@@ -54,7 +54,7 @@ author:
   name: Qing An
   organization: Alibaba Group
   email: anqing.aq@alibaba-inc.com
-
+ -
 normative:
   RFC8174:
   RFC2119:
@@ -121,6 +121,33 @@ informative:
     title: MultipathTester - Comparing MPTCP and MPQUIC in Mobile Environments. In 2019 Network Traffic Measurement and Analysis Conference (TMA) 
     date: 2019
     target: https://multipath-quic.org/multipathtester/2019/06/18/mnm-paper.html
+  BLEST:
+    author:
+      - ins: S. Ferlin
+      - ins: O. Alay
+      - ins: O. Mehani
+      - ins: R. Boreli
+    title: BLEST: Blocking Estimation-based MPTCP Scheduler for Heterogeneous Networks
+    date: 2016
+    target: https://ieeexplore.ieee.org/document/7497206
+  ECF:
+    author:
+      - ins: Y. Lim
+      - ins: E. Nahum
+      - ins: D. Towsley
+      - ins: R. Gibbens
+    title: ECF: An MPTCP Path Scheduler to Manage Heterogeneous Paths
+    date: 2017
+    target: https://dl.acm.org/doi/10.1145/3143314.3078552
+  SA-ECF:
+    author:
+      - ins: A. Rabitsch
+      - ins: P. Hurtig
+      - ins: A. Brunstrom
+    title: A Stream-Aware Multipath QUIC Scheduler for Heterogeneous Paths
+    seriesinfo: Proceedings of the Workshop on the Evolution, Performance, and Interoperability of QUICDecember 2018 Pages 29–35
+    date: 2018
+    target: https://dl.acm.org/doi/10.1145/3284850.3284855
     
 --- abstract
 
@@ -293,6 +320,12 @@ new subflow needs to be established over a path while the packet scheduler
 selects the subflow over which the next packet will be sent. A more detailed
 description of several packet schedulers may be found in
 {{I-D.bonaventure-iccrg-schedulers}}.
+There are several packet scheduler solutions for MPTCP.
+{{BLEST}} proposes a send-window BLocking ESTimation scheduler, BLEST,
+which aims to minimise HoL-blocking in heterogeneous paths, such as offered 
+by cellular and Wi-Fi networks.
+{{ECF}} proposes a MPTCP path scheduler, ECF (Earliest Completion First), 
+that utilizes all relevant information about a path, not just RTT.
 
 The "Active-Standby" mode can be implemented using a path manager that tries to
 use the active access and switches to the standby one after a certain number
@@ -519,7 +552,10 @@ of time during which both networks are imperfect {{MPTester}}. During
 these periods, it is important to be able to use both networks
 simultaneously.
 Since there is a single Multipath QUIC session between the UE and the
-ATSSS UPF load-balancers do not cause problems. 
+ATSSS UPF load-balancers do not cause problems. {{SA-ECF}} proposes a 
+stream-aware packet scheduler for Multipath QUIC, which schedules the 
+sending of stream data so that the completion of individual streams are 
+not delayed by slower paths.
 
 --- OB: Not convinced by the last paragraphs
 
